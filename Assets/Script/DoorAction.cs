@@ -13,6 +13,10 @@ public class DoorAction : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        transform.GetComponent<Animator>().SetBool("isOpen", false);
+        if(other.transform.tag == "Player")
+        {
+            transform.GetComponent<Animator>().SetBool("isOpen", false);
+        }
+       
     }
 }
