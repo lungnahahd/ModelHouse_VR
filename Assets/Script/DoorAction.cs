@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DoorAction : MonoBehaviour
 {
@@ -19,4 +20,5 @@ public class DoorAction : MonoBehaviour
         }
        
     }
+    
 }
