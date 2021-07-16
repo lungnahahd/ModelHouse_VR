@@ -19,6 +19,8 @@ public class RayCast : MonoBehaviour
 
     public Image gauge;
     float timegone;
+    public Transform dooropen;
+    public GameObject head;
 
     void Raycasting()
     {
@@ -34,6 +36,8 @@ public class RayCast : MonoBehaviour
                 if (timegone >= 3)
                 {
                     timegone = 3;
+                    head.transform.position = Vector3.MoveTowards(transform.position, dooropen.position, Time.deltaTime * 0.1f);
+
                 }
             }
             else
