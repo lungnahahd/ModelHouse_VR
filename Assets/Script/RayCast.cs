@@ -29,14 +29,14 @@ public class RayCast : MonoBehaviour
         Vector3 forward = transform.TransformDirection(Vector3.forward * 1000);
         if (Physics.Raycast(transform.position, forward, out hit))
         {
-            if (hit.collider.tag == "Door")
+            if (hit.transform.tag == "Door")
             {
-                timegone = Time.deltaTime + timegone;
                 gauge.fillAmount = timegone / 3;
+                timegone = Time.deltaTime + timegone;
                 if (timegone >= 3)
                 {
+                    StartCoroutine(InHome());
                     timegone = 3;
-                    head.transform.position = Vector3.MoveTowards(transform.position, dooropen.position, Time.deltaTime * 0.1f);
 
                 }
             }
@@ -47,5 +47,14 @@ public class RayCast : MonoBehaviour
             }
         }
         Debug.DrawRay(transform.position, forward, Color.blue);
+    }
+
+    IEnumerator InHome()
+    {
+        while (head.transform.position != dooropen.position)
+        {
+            head.transform.position = Vector3.MoveTowards(head.transform.position, dooropen.position, Time.deltaTime);
+            yield return null;
+        }
     }
 }
