@@ -20,7 +20,10 @@ public class RayCast : MonoBehaviour
     public Image gauge;
     float timegone;
     public Transform dooropen;
+
     public GameObject head;
+
+    public GameObject tv_display;
 
     void Raycasting()
     {
@@ -36,6 +39,17 @@ public class RayCast : MonoBehaviour
                 if (timegone >= 3)
                 {
                     StartCoroutine(InHome());
+                    timegone = 3;
+
+                }
+            }
+            else if(hit.transform.tag == "TV")
+            {
+                gauge.fillAmount = timegone / 3;
+                timegone = Time.deltaTime + timegone;
+                if (timegone >= 3)
+                {
+                    tv_display.SetActive(true);
                     timegone = 3;
 
                 }
