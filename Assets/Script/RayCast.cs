@@ -30,6 +30,8 @@ public class RayCast : MonoBehaviour
 
     public Transform bath;
 
+    public GameObject showerwater;
+
     void Raycasting()
     {
         //public GameObject gauge;
@@ -67,6 +69,17 @@ public class RayCast : MonoBehaviour
                 if (timegone >= 3)
                 {
                     StartCoroutine(Bath());
+                    timegone = 3;
+
+                }
+            }
+            else if(hit.transform.tag == "Water")
+            {
+                gauge.fillAmount = timegone / 3;
+                timegone = Time.deltaTime + timegone;
+                if (timegone >= 3)
+                {
+                    showerwater.SetActive(true);
                     timegone = 3;
 
                 }
