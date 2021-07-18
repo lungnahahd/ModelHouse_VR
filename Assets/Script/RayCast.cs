@@ -53,7 +53,7 @@ public class RayCast : MonoBehaviour
     {
         while (head.transform.position != dooropen.position)
         {
-            head.transform.position = Vector3.MoveTowards(head.transform.position, dooropen.position, Time.deltaTime);
+            head.transform.position = Vector3.MoveTowards(head.transform.position, dooropen.position, Time.deltaTime * 0.01f);
             yield return null;
         }
     }
