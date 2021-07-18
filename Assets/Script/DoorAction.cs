@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class DoorAction : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)

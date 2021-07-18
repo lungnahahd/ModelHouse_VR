@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Door
   - TV
+  - Bath
   layers:
   - Default
   - TransparentFX

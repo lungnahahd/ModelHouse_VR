@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
+using System.Threading;
 
 public class RayCast : MonoBehaviour
 {
@@ -25,6 +27,8 @@ public class RayCast : MonoBehaviour
 
     public GameObject tv_display;
     public Transform showtv;
+
+    public Transform bath;
 
     void Raycasting()
     {
@@ -56,6 +60,17 @@ public class RayCast : MonoBehaviour
 
                 }
             }
+            else if(hit.transform.tag == "Bath")
+            {
+                gauge.fillAmount = timegone / 3;
+                timegone = Time.deltaTime + timegone;
+                if (timegone >= 3)
+                {
+                    StartCoroutine(Bath());
+                    timegone = 3;
+
+                }
+            }
             else
             {
                 gauge.fillAmount = 0;
@@ -81,4 +96,13 @@ public class RayCast : MonoBehaviour
             yield return null;
         }
     }
+    IEnumerator Bath()
+    {
+        while (head.transform.position != bath.position)
+        {
+            head.transform.position = Vector3.MoveTowards(head.transform.position, bath.position, Time.deltaTime * 0.1f);
+            yield return null;
+        }
+    }
+    
 }
