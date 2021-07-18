@@ -24,6 +24,7 @@ public class RayCast : MonoBehaviour
     public GameObject head;
 
     public GameObject tv_display;
+    public Transform showtv;
 
     void Raycasting()
     {
@@ -49,6 +50,7 @@ public class RayCast : MonoBehaviour
                 timegone = Time.deltaTime + timegone;
                 if (timegone >= 3)
                 {
+                    StartCoroutine(ShowTV());
                     tv_display.SetActive(true);
                     timegone = 3;
 
@@ -68,6 +70,14 @@ public class RayCast : MonoBehaviour
         while (head.transform.position != dooropen.position)
         {
             head.transform.position = Vector3.MoveTowards(head.transform.position, dooropen.position, Time.deltaTime * 0.01f);
+            yield return null;
+        }
+    }
+    IEnumerator ShowTV()
+    {
+        while (head.transform.position != showtv.position)
+        {
+            head.transform.position = Vector3.MoveTowards(head.transform.position, showtv.position, Time.deltaTime * 0.1f);
             yield return null;
         }
     }

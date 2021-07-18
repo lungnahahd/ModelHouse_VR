@@ -827,6 +827,51 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &710969347
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 710969348}
+  - component: {fileID: 710969349}
+  m_Layer: 0
+  m_Name: ShowTV
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &710969348
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 710969347}
+  m_LocalRotation: {x: -0, y: -0.037959617, z: -0, w: 0.99927926}
+  m_LocalPosition: {x: -0.909, y: 0.67, z: 8.991}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2058084634}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -4.3510003, z: 0}
+--- !u!64 &710969349
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 710969347}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300008, guid: cdc73258ef2d5ee449fe6d18ccf0122f, type: 3}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -943,6 +988,7 @@ MonoBehaviour:
   dooropen: {fileID: 1115236151}
   head: {fileID: 1954322326}
   tv_display: {fileID: 433500807}
+  showtv: {fileID: 710969348}
 --- !u!54 &963194231
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -988,7 +1034,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2058084634}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: -4.3510003, z: 0}
 --- !u!64 &1115236152
 MeshCollider:
@@ -1150,7 +1196,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0.5}
+  m_Center: {x: 0, y: 0, z: 1}
 --- !u!1 &2058084633
 GameObject:
   m_ObjectHideFlags: 0
@@ -1178,6 +1224,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 710969348}
   - {fileID: 1115236151}
   m_Father: {fileID: 0}
   m_RootOrder: 5
