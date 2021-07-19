@@ -29,14 +29,14 @@ public class RayCast : MonoBehaviour
     public Transform showtv;
 
     public Transform bath;
-
+    public Transform frontbath;
     public GameObject showerwater;
 
     void Raycasting()
     {
         //public GameObject gauge;
         RaycastHit hit;
-        Vector3 forward = transform.TransformDirection(Vector3.forward * 1000);
+        Vector3 forward = transform.TransformDirection(Vector3.forward * 10000);
         if (Physics.Raycast(transform.position, forward, out hit))
         {
             if (hit.transform.tag == "Door")
@@ -84,6 +84,17 @@ public class RayCast : MonoBehaviour
 
                 }
             }
+            else if(hit.transform.tag == "FrontBath")
+            {
+                gauge.fillAmount = timegone / 3;
+                timegone = Time.deltaTime + timegone;
+                if (timegone >= 3)
+                {
+                    StartCoroutine(FrontBath());
+                    timegone = 3;
+
+                }
+            }
             else
             {
                 gauge.fillAmount = 0;
@@ -105,7 +116,7 @@ public class RayCast : MonoBehaviour
     {
         while (head.transform.position != showtv.position)
         {
-            head.transform.position = Vector3.MoveTowards(head.transform.position, showtv.position, Time.deltaTime * 0.1f);
+            head.transform.position = Vector3.MoveTowards(head.transform.position, showtv.position, Time.deltaTime * 0.01f);
             yield return null;
         }
     }
@@ -113,9 +124,17 @@ public class RayCast : MonoBehaviour
     {
         while (head.transform.position != bath.position)
         {
-            head.transform.position = Vector3.MoveTowards(head.transform.position, bath.position, Time.deltaTime * 0.1f);
+            head.transform.position = Vector3.MoveTowards(head.transform.position, bath.position, Time.deltaTime * 0.01f);
             yield return null;
         }
     }
-    
+    IEnumerator FrontBath()
+    {
+        while (head.transform.position != frontbath.position)
+        {
+            head.transform.position = Vector3.MoveTowards(head.transform.position, frontbath.position, Time.deltaTime * 0.01f);
+            yield return null;
+        }
+    }
+
 }
